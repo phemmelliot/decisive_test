@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "503423999761",
+    "firebase_url": "https://lcc-assessment.firebaseio.com",
+    "project_id": "lcc-assessment",
+    "storage_bucket": "lcc-assessment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503423999761:android:84bf52b834f414a28c36b0",
+        "android_client_info": {
+          "package_name": "com.phemmelliot.decisive_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503423999761-kl411jeteknalbs1d200175lcn3bgt35.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2xtUDy7C6qMJJq0XPldy9wlzmfgPJeDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503423999761-kl411jeteknalbs1d200175lcn3bgt35.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "503423999761-sb5s0pduondpuorqb5g6p2s3h5soaecn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.phemmelliot.mobileAssessment"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503423999761:android:8aaac1d59cf48aa98c36b0",
+        "android_client_info": {
+          "package_name": "com.phemmelliot.mobile_assessment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503423999761-kl411jeteknalbs1d200175lcn3bgt35.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2xtUDy7C6qMJJq0XPldy9wlzmfgPJeDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503423999761-kl411jeteknalbs1d200175lcn3bgt35.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "503423999761-sb5s0pduondpuorqb5g6p2s3h5soaecn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.phemmelliot.mobileAssessment"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
