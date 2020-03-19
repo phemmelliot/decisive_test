@@ -13,6 +13,8 @@ class CustomTextField extends StatefulWidget {
   final String Function(String value) validator;
   final bool isPasswordField;
   final String errorText;
+  final int maxLines;
+  final Function onTap;
 
   const CustomTextField({
     Key key,
@@ -27,6 +29,8 @@ class CustomTextField extends StatefulWidget {
     this.isPasswordField = false,
     this.errorText,
     this.prefixText,
+    this.maxLines = 1,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -71,10 +75,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ? <TextInputFormatter>[WhitelistingTextInputFormatter.digitsOnly]
             : [],
         obscureText: obscureText,
+        maxLines: widget.maxLines,
         cursorColor: Helper.primaryColor,
         keyboardType: widget.keyboardType,
         enabled: widget.enabled,
         controller: _controller,
+        onTap: widget.onTap,
         decoration: InputDecoration(
             border: OutlineInputBorder(borderSide: BorderSide(color: Helper.primaryColor)),
             errorText: widget.errorText,

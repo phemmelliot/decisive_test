@@ -113,7 +113,7 @@ class _LoginState extends State<Login> {
                             );
                           }
                         },
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                         color: Helper.primaryColor,
                         child: Text(
                           'Get In',
