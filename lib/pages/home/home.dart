@@ -1,9 +1,11 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:decisive_app/components/custom_textfield/custom_textfield.dart';
 import 'package:decisive_app/core/models/menu.dart';
 import 'package:decisive_app/utils/helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 enum TimeOfDayType {
   OPENING,
@@ -25,10 +27,19 @@ class _HomeState extends State<Home> {
   final TextEditingController _openingTimeController = TextEditingController(text: '00:00');
   final TextEditingController _closingTimeController = TextEditingController(text: '00:00');
   final List<Menu> _menu = List();
+  final List<File> _pickedImages = List();
 
   GlobalKey<FormState> _addFoodkey = GlobalKey<FormState>();
   TimeOfDay _openingTime;
   TimeOfDay _closingTime;
+
+  Future getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      _pickedImages.add(image);
+    });
+  }
 
   Future<Null> selectTime(BuildContext context, TimeOfDayType type) async {
     final TimeOfDay picked = await showTimePicker(
@@ -148,7 +159,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget _builldMenuPicker() {
+  Widget _buildMenuPicker() {
     return InkWell(
       onTap: () {
         Helper.showActionDialog(context, _buildAddMenuForm);
@@ -163,17 +174,17 @@ class _HomeState extends State<Home> {
           children: <Widget>[
             Icon(
               Icons.add_circle,
-              color: Colors.greenAccent,
+              color: Helper.primaryColor,
               size: 60,
             ),
             Text(
               'Add Menu',
-              style: TextStyle(color: Colors.greenAccent),
+              style: TextStyle(color: Helper.primaryColor),
             )
           ],
         ),
         decoration: BoxDecoration(
-          border: Border.fromBorderSide(BorderSide(color: Colors.greenAccent)),
+          border: Border.fromBorderSide(BorderSide(color: Helper.primaryColor)),
           borderRadius: BorderRadius.circular(10),
         ),
       ),
@@ -214,7 +225,7 @@ class _HomeState extends State<Home> {
         ],
       ),
       decoration: BoxDecoration(
-        border: Border.fromBorderSide(BorderSide(color: Colors.greenAccent)),
+        border: Border.fromBorderSide(BorderSide(color: Helper.primaryColor)),
         borderRadius: BorderRadius.circular(10),
       ),
     );
@@ -226,32 +237,52 @@ class _HomeState extends State<Home> {
       menus.add(_buildMenuWidget(_menu[i]));
     }
 
-    menus.add(_builldMenuPicker());
+    menus.add(_buildMenuPicker());
     return menus;
   }
 
-  Widget _buildImagePicker(int index) {
+  Widget _buildImagePicker() {
+    return InkWell(
+      onTap: (){
+        getImage();
+      },
+      child: Container(
+        key: Key('Picker'),
+        height: 150,
+        width: 150,
+        margin: EdgeInsets.only(right: 10),
+        child: Icon(
+          Icons.add_circle,
+          color: Helper.primaryColor,
+          size: 60,
+        ),
+        decoration: BoxDecoration(
+            border: Border.fromBorderSide(BorderSide(color: Helper.primaryColor)),
+            borderRadius: BorderRadius.circular(10)),
+      ),
+    );
+  }
+
+  Widget _buildImageCard(File imageFile, int index){
     return Container(
       key: Key('$index'),
       height: 150,
       width: 150,
       margin: EdgeInsets.only(right: 10),
-      child: Icon(
-        Icons.add_circle,
-        color: Colors.greenAccent,
-        size: 60,
-      ),
+      child: Image.file(imageFile, fit: BoxFit.cover,),
       decoration: BoxDecoration(
-          border: Border.fromBorderSide(BorderSide(color: Colors.greenAccent)),
+          border: Border.fromBorderSide(BorderSide(color: Helper.primaryColor)),
           borderRadius: BorderRadius.circular(10)),
     );
   }
 
   List<Widget> _buildImagePickers() {
     List<Widget> pickers = [];
-    for (int i = 0; i < 6; i++) {
-      pickers.add(_buildImagePicker(i));
+    for (int i = 0; i < _pickedImages.length; i++) {
+      pickers.add(_buildImageCard(_pickedImages[i], i));
     }
+
+    pickers.add(_buildImagePicker());
     return pickers;
   }
 
